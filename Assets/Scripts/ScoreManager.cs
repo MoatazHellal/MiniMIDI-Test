@@ -5,7 +5,6 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Instance;
-    public AudioSource hitSFX;
     public AudioSource missSFX;
     public TMPro.TextMeshPro scoreText;
     static int Score;
@@ -17,7 +16,6 @@ public class ScoreManager : MonoBehaviour
     public static void Hit()
     {
         Score += 1;
-        Instance.hitSFX.Play();
     }
     public static void Miss()
     {

@@ -10,9 +10,11 @@ public class SongManager : MonoBehaviour
 {
     public static SongManager Instance;
     public AudioSource audioSource;
+
     public Lane[] lanes;
+
     public float songDelayInSeconds;
-    public double marginOfError; // in seconds
+    public double marginOfError;
 
     public int inputDelayInMilliseconds;
 

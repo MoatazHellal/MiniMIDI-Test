@@ -9,6 +9,7 @@ using UnityEngine;
 
 public class Lane : MonoBehaviour
 {
+    Animation anim;
     private InputDevice inputDevice;
     private Queue<Melanchall.DryWetMidi.MusicTheory.NoteName> midiNoteQueue = new Queue<Melanchall.DryWetMidi.MusicTheory.NoteName>();
 
@@ -24,6 +25,8 @@ public class Lane : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animation>();
+
         foreach (var device in InputDevice.GetAll())
         {
             inputDevice = device;
@@ -68,7 +71,6 @@ public class Lane : MonoBehaviour
             if (SongManager.GetAudioSourceTime() >= timeStamps[spawnIndex] - SongManager.Instance.noteTime)
             {
                 var note = Instantiate(notePrefab, transform);
-                Debug.Log("Note Spawned");
                 notes.Add(note.GetComponent<Note>());
                 note.GetComponent<Note>().assignedTime = (float)timeStamps[spawnIndex];
                 spawnIndex++;
@@ -113,10 +115,12 @@ public class Lane : MonoBehaviour
     }
     private void Hit()
     {
+        anim.Play("Hit");
         ScoreManager.Hit();
     }
     private void Miss()
     {
+        anim.Play("Miss");
         ScoreManager.Miss();
     }
 }
