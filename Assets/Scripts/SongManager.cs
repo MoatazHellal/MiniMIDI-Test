@@ -5,6 +5,8 @@ using Melanchall.DryWetMidi.Core;
 using Melanchall.DryWetMidi.Interaction;
 using System.IO;
 using System;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SongManager : MonoBehaviour
 {
@@ -17,7 +19,7 @@ public class SongManager : MonoBehaviour
     public double marginOfError;
 
     public int inputDelayInMilliseconds;
-
+    public Button replayButton;
 
     public string fileName;
     public float noteTime;
@@ -32,11 +34,17 @@ public class SongManager : MonoBehaviour
     }
 
     public static MidiFile midiFile;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
         Instance = this;
         ReadMidiFile();
+
+        replayButton.gameObject.SetActive(false);
+
     }
 
     private void ReadMidiFile()
@@ -63,8 +71,18 @@ public class SongManager : MonoBehaviour
         return (double)Instance.audioSource.timeSamples / Instance.audioSource.clip.frequency;
     }
 
+    public void ReplaySong()
+    {
+        // Reload scene
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     void Update()
     {
-
+        if (!audioSource.isPlaying && !replayButton.gameObject.activeSelf)
+        {
+            // The song has finished
+            replayButton.gameObject.SetActive(true);
+        }
     }
 }

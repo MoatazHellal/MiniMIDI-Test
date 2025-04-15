@@ -35,7 +35,6 @@ public class Lane : MonoBehaviour
 
         if (inputDevice == null)
         {
-            Debug.LogError("No MIDI input device found!");
             return;
         }
 
