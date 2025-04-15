@@ -32,9 +32,6 @@ It was developed as a test project to explore musical interactions, gameplay syn
 https://github.com/user-attachments/assets/83f6fa54-51bd-41f2-86c3-e71d70ba82eb
 
 
-
-> 🎥 *Click the image above to watch a short demo of the game in action.*
-
 ---
 
 Made with ❤️ and 🎶
